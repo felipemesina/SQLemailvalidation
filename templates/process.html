@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Email Validation</title>
+  </head>
+  <body>
+    {% with messages = get_flashed_messages(category_filter=["wrong"]) %}
+      {% if messages %}
+        {% for message in messages %}
+          <ul>
+            <li>{{message}}</li>
+          </ul>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% with messages = get_flashed_messages(category_filter=["success"]) %}
+      {% if messages %}
+        {% for message in messages %}
+          <ul>
+            <li>{{message}}</li>
+          </ul>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+
+    {% for email in emails: %}
+      <p>Email: {{ email['email']}} {{ email['created_at']}}</p>
+    {% endfor %}
+  </body>
+</html>
